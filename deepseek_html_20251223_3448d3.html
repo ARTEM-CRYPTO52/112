@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скачать файл</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: white;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(to right, #FF416C, #FF4B2B);
+            color: white;
+            font-size: 2.2rem;
+            font-weight: bold;
+            padding: 35px 80px;
+            border-radius: 70px;
+            text-decoration: none;
+            margin: 40px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 65, 108, 0.4);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 65, 108, 0.6);
+            letter-spacing: 1px;
+        }
+        
+        .download-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .download-btn i {
+            margin-right: 15px;
+            font-size: 2.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .download-btn:hover i {
+            transform: translateY(-5px);
+        }
+        
+        .pulse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 70px;
+            background: rgba(255, 255, 255, 0.3);
+            animation: pulse-animation 2s infinite;
+            z-index: 0;
+        }
+        
+        @keyframes pulse-animation {
+            0% {
+                opacity: 1;
+                width: 100%;
+                height: 100%;
+            }
+            100% {
+                opacity: 0;
+                width: 140%;
+                height: 140%;
+            }
+        }
+        
+        .file-info {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: left;
+        }
+        
+        .file-info h3 {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #FFD700;
+        }
+        
+        .file-info h3 i {
+            margin-right: 10px;
+        }
+        
+        .file-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .detail {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px 15px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .detail:hover {
+            transform: translateY(-3px);
+        }
+        
+        .detail i {
+            margin-right: 12px;
+            width: 25px;
+            color: #4DFFDF;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .download-btn {
+                font-size: 1.8rem;
+                padding: 25px 50px;
+                width: 100%;
+            }
+            
+            .file-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Скачать файл</h1>
+        
+        <a href="https://drive.google.com/drive/folders/1aJeBwNloNQUKibqzz5n87hdS2G6cwJlZ?usp=drive_link" class="download-btn" id="downloadBtn">
+            <div class="pulse"></div>
+            <i class="fas fa-download"></i> СКАЧАТЬ
+        </a>
+        
+        <div class="file-info">
+            <h3><i class="fas fa-info-circle"></i> Информация о файле</h3>
+            
+            <div class="file-details">
+                <div class="detail">
+                    <i class="fas fa-file-archive"></i>
+                    <span><strong>Имя файла:</strong> important_document.zip</span>
+                </div>
+                <div class="detail">
+                    <i class="fas fa-hdd"></i>
+                    <span><strong>Размер:</strong> 245 MB</span>
+                </div>
+                <div class="detail">
+                    <i class="fas fa-calendar-check"></i>
+                    <span><strong>Обновлен:</strong> 15.11.2023</span>
+                </div>
+                <div class="detail">
+                    <i class="fas fa-download"></i>
+                    <span><strong>Загрузок:</strong> <span id="downloadCount">1,247</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Обработчик кнопки скачивания
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            // Обновляем счетчик скачиваний
+            const countElement = document.getElementById('downloadCount');
+            let count = parseInt(countElement.textContent.replace(',', '')) || 1247;
+            count++;
+            countElement.textContent = count.toLocaleString();
+            
+            // Анимация кнопки
+            const btn = e.currentTarget;
+            const originalHTML = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ЗАГРУЗКА...';
+            btn.style.background = 'linear-gradient(to right, #4CAF50, #2E8B57)';
+            
+            // Возвращаем исходное состояние через 2 секунды
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.style.background = '';
+            }, 2000);
+            
+            // Файл начнет скачиваться сразу (через href)
+        });
+        
+        // Анимация пульсации для кнопки
+        const pulseElement = document.querySelector('.pulse');
+        setInterval(() => {
+            pulseElement.style.animation = 'none';
+            setTimeout(() => {
+                pulseElement.style.animation = 'pulse-animation 2s infinite';
+            }, 10);
+        }, 2000);
+    </script>
+</body>
+</html>
